@@ -1,6 +1,13 @@
 let ball;
 let plataformas = [];
 
+let colores;
+let trackingData;
+
+let puede=0;
+
+let separacion_y=580;
+
 function setup(){
     createCanvas(400,600);
     video = createCapture(VIDEO);
@@ -66,6 +73,20 @@ function draw(){
     background(12, 36, 97);
     image(video, 0,0, width, height);
 
+    if(trackingData){ 
+      for (var i = 0; i < trackingData.length; i++) { 
+       // console.log( trackingData[i] );
+        if(puede==0){
+      
+        CamPlatarforma();
+        
+        desbloquear();
+        }
+        puede++;
+        //rect(trackingData[i].x,trackingData[i].y,trackingData[i].width,trackingData[i].height)
+      }
+    }
+
     for(let i= plataformas.length-1; i >= 0; i--){
         plataformas[i].show();
       
@@ -100,3 +121,19 @@ function keyPresionado(){
      }
     
  }   
+
+
+
+ function CamPlatarforma(){
+  plataformas.push(new Plataforma());
+  separacion_y -= 90;
+  plataformas[plataformas.length-1].crear(separacion_y);
+
+ }
+
+function desbloquear(){
+setTimeout(function(){
+ puede=0;
+}, 3000);
+
+}

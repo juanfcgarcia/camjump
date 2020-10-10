@@ -25,7 +25,7 @@ caida=false;
     }
 
     Jump = function(){
-        this.y -=5;
+        this.y -=6;
     }
 
     DROP = function(){
