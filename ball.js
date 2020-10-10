@@ -32,7 +32,7 @@ caida=false;
         this.gravedad= 0.00;
         this.velocidad +=this.gravedad;
         this.y += this.velocidad;
-        console.log(this.gravedad);
+       
     }
 
     UP = function(){
@@ -47,7 +47,7 @@ caida=false;
             this.gravedad= 0.1;
             this.velocidad +=this.gravedad;
             this.y += this.velocidad;
-            console.log(this.gravedad);
+        
         }
 
         if (this.y > height){ //El limite de abajo
