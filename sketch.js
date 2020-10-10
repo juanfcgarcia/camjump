@@ -5,6 +5,7 @@ function setup(){
     createCanvas(400,600);
     ball =  new Ball();
     plataformas.push(new Plataforma());
+    
 }
 
 function draw(){
@@ -13,7 +14,7 @@ function draw(){
 
     for(let i= plataformas.length-1; i >= 0; i--){
         plataformas[i].show();
-        plataformas[i].update();
+      
 
         if(plataformas[i].hits(ball)){
             
@@ -29,9 +30,7 @@ function draw(){
     ball.update();
     ball.show();
 
-    if(frameCount % 130==0){
-        plataformas.push(new Plataforma());
-    }
+  
 
     
 }
