@@ -1,9 +1,9 @@
 class Plataforma {
-    spacing = 40;
+    spacing = 55;
     right= random(width/2); //top
     left=     width - (this.right + this.spacing); //bottom
     
-    y = height;
+    y = 580;
     h = 20;
     speed=1;
 

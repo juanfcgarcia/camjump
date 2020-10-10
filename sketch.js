@@ -29,7 +29,7 @@ function draw(){
     ball.update();
     ball.show();
 
-    if(frameCount % 180==0){
+    if(frameCount % 130==0){
         plataformas.push(new Plataforma());
     }
 
