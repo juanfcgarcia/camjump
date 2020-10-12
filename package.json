@@ -1,0 +1,24 @@
+{
+  "name": "camjump",
+  "version": "1.0.0",
+  "description": "Proyecto final para movimiento e interaccion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanfcgarcia/camjump.git"
+  },
+  "keywords": [
+    "js",
+    "p5",
+    "vanilla"
+  ],
+  "author": "Juan Felipe Castro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanfcgarcia/camjump/issues"
+  },
+  "homepage": "https://github.com/juanfcgarcia/camjump#readme"
+}
