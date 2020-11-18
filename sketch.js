@@ -4,7 +4,7 @@ let plataformas = [];
 let colores;
 let trackingData;
 
-let puede=0;
+let desbloquear=0;
 
 let separacion_y=580;
 
@@ -77,13 +77,13 @@ function draw(){
     if(trackingData){ 
       for (var i = 0; i < trackingData.length; i++) { 
        // console.log( trackingData[i] );
-        if(puede==0){
+        if(desbloquear==0){
       
         CamPlatarforma();
         
-        desbloquear();
+        Prevent();
         }
-        puede++;
+        desbloquear++;
         //rect(trackingData[i].x,trackingData[i].y,trackingData[i].width,trackingData[i].height)
       }
     }
@@ -132,9 +132,9 @@ function keyPresionado(){
 
  }
 
-function desbloquear(){
+function Prevent(){ //Una vez se crea una plataforma solo se podrá crear otra despues de 3s
 setTimeout(function(){
- puede=0;
+ desbloquear=0;
 }, 3000);
 
 }
