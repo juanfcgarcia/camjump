@@ -4,6 +4,7 @@ y=50;
 
 gravedad= 0.1;
 velocidad= 0;
+puntos = 0;
 caida=false;
 
     show = function(){
@@ -53,7 +54,7 @@ caida=false;
         if (this.y > height){ //El limite de abajo
             this.y = height;
             this.velocidad=0;
-            console.log(this.y);
+            
         }
 
         if (this.y <= 0){ //El limite de arriba

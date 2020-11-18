@@ -1,0 +1,68 @@
+body{
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    height: 100%;
+    padding-top: 5%;
+    margin: 0;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+h1 { 
+    color: #ffffff;
+    font-family: 'Montserrat', sans-bold;
+    font-weight:900;
+    font-size: 2em;
+  
+   padding-top: 10%;
+
+}
+
+h2 { 
+    color: #ffffff;
+    font-family: 'Montserrat', sans-bold;
+    font-weight:900;
+    font-size: 2em;
+  
+   padding-top: 10%;
+
+}
+
+.mostrarPoblacion{
+    border: 1px;
+    display: flex;
+    align-items: flex-end;
+    padding: 5px, 5px;
+    text-align: center;
+    padding-right: 40px;
+}
+
+.mostrarGeneracion{
+    border: 1px;
+    display: flex;
+    align-items: flex-end;
+    padding: 5px, 5px;
+    text-align: center;
+    padding-right: 40px;
+}
+
+p { 
+    padding-left: 5%;
+    color: #0c0c0c;
+    font-family: 'Montserrat', sans-bold;
+    font-weight:900;
+    font-size: 2em;
+  
+
+
+}
+.mostrarEstado{
+    vertical-align:top;
+
+}
