@@ -23,6 +23,7 @@ class Plataforma {
             if(bola.y> this.y && bola.y < this.y + this.h){
                 this.resaltarColor=true;
                 bola.caida=false;
+                bola.puntos+=1;
                 bola.UP();
                 return true;
             }        
@@ -30,7 +31,6 @@ class Plataforma {
 
         this.resaltarColor=false;
         bola.caida=true;
-        bola.puntos+=30;
         return false;
     }
 

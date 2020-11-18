@@ -72,6 +72,7 @@ function draw(){
     keyPresionado();
     background(12, 36, 97);
     image(video, 0,0, width, height);
+    document.getElementById('poblacionActual').innerHTML = ball.puntos;
 
     if(trackingData){ 
       for (var i = 0; i < trackingData.length; i++) { 
