@@ -19,13 +19,42 @@ class Ball2 {
 
   display() {
     fill(230);
-    ellipse(this.position.x, this.position.y, this.mass * 16, this.mass * 16);
+    ellipse(this.position.x, this.position.y, this.mass * 70, this.mass * 70);
   }
 
   checkEdges() {
-    if (this.position.y > height - this.mass * 8) {
-      this.velocity.y *= -0.9;
-      this.position.y = height - this.mass * 100;
+    if (this.position.y > height - this.mass * 0.01) {
+      this.bounceUP();
     }
+  }
+
+  bounceUP() {
+    this.velocity.y *= -0.2;
+    this.position.y = height - this.mass * 0.01;
+  }
+
+  checkPlatformEdges(platform) {
+    if (
+      this.position.y > platform.y &&
+      this.position.y < platform.y + platform.h
+    ) {
+      this.bounceUP();
+    }
+  }
+
+  moveLeft() {
+    if (this.position.x > 10) {
+      this.position.x -= 6;
+    }
+  }
+
+  moveRight() {
+    if (this.position.x < width - 6) {
+      this.position.x += 6;
+    }
+  }
+
+  jump() {
+    this.applyForce(createVector(0, -1.15));
   }
 }
