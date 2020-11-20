@@ -9,6 +9,9 @@ let desbloquear = 0;
 
 let separacion_y = 580;
 
+let F; //FrameRate
+let D = 0; //Distance translated per second
+
 function setup() {
   createCanvas(400, 600);
   video = createCapture(VIDEO);
@@ -66,7 +69,12 @@ function draw() {
   keyPresionado();
   background(12, 36, 97);
   image(video, 0, 0, width, height);
-  document.getElementById("poblacionActual").innerHTML = ball.puntos;
+  //document.getElementById("poblacionActual").innerHTML = ball.puntos;
+  document.getElementById("poblacionActual").innerHTML = ball2.jumpsLimit;
+  document.getElementById("mass").innerHTML = ball2.mass;
+  document.getElementById("velocity").innerHTML = ball2.velocity;
+  document.getElementById("acceleration").innerHTML = ball2.acceleration;
+  document.getElementById("D").innerHTML = D;
   var gravity = createVector(0, 0.3 * ball2.mass);
 
   if (trackingData) {
@@ -93,29 +101,39 @@ function draw() {
     }
   }
 
-  ball.update();
-  ball.show();
-
   ball2.applyForce(gravity);
   ball2.update();
   ball2.display();
   ball2.checkEdges();
+  ball2.deaccelerate(D);
+  F = frameRate();
+  if (D > 0.15) {
+    D -= 0.15;
+  } else {
+    D = 0;
+  }
+}
+
+function keyPressed() {
+  if (keyCode === UP_ARROW) {
+    ball2.jump();
+  }
 }
 
 function keyPresionado() {
   if (keyIsDown(LEFT_ARROW)) {
-    ball.MoveLeft();
-    ball2.moveLeft();
+    if (D < 10) {
+      D += 5;
+    }
+    ball2.moveLeft(D, F);
+    //ball2.bounceLEFT();
   }
   if (keyIsDown(RIGHT_ARROW)) {
-    ball.MoveRight();
-    ball2.moveRight();
-  }
-  if (keyIsDown(UP_ARROW)) {
-    ball2.jump();
-  }
-  if (key == "j" || key == "J") {
-    ball.Jump();
+    if (D < 10) {
+      D += 5;
+    }
+    ball2.moveRight(D, F);
+    //ball2.bounceRIGHT();
   }
 }
 

@@ -4,10 +4,11 @@ class Ball2 {
     this.position = createVector(x, y);
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
+    this.jumpsLimit = 0;
   }
 
   applyForce(force) {
-    var f = p5.Vector.div(force, this.mass);
+    let f = p5.Vector.div(force, this.mass);
     this.acceleration.add(f);
   }
 
@@ -26,11 +27,22 @@ class Ball2 {
     if (this.position.y > height - this.mass * 0.01) {
       this.bounceUP();
     }
+    if (this.position.x > 10) {
+      this.bounceLEFT();
+    }
   }
 
   bounceUP() {
     this.velocity.y *= -0.2;
     this.position.y = height - this.mass * 0.01;
+  }
+
+  bounceLEFT() {
+    this.velocity.x *= -0.2;
+  }
+
+  bounceRIGHT() {
+    this.velocity.x *= 0.2;
   }
 
   checkPlatformEdges(platform) {
@@ -42,19 +54,43 @@ class Ball2 {
     }
   }
 
-  moveLeft() {
-    if (this.position.x > 10) {
-      this.position.x -= 6;
+  deaccelerate(D) {
+    if (D === 0) {
+      this.velocity.x = 0;
     }
   }
 
-  moveRight() {
-    if (this.position.x < width - 6) {
-      this.position.x += 6;
+  moveLeft(distancePS, frameRate) {
+    if (this.position.x > 10 && distancePS > 0) {
+      let f = p5.Vector.div(
+        createVector(-(distancePS / frameRate), -0.1),
+        this.mass
+      );
+      this.velocity.add(f);
+    }
+  }
+
+  moveRight(distancePS, frameRate) {
+    if (this.position.x < width - 6 && distancePS > 0) {
+      let f = p5.Vector.div(
+        createVector(distancePS / frameRate, -0.1),
+        this.mass
+      );
+      this.velocity.add(f);
     }
   }
 
   jump() {
-    this.applyForce(createVector(0, -1.15));
+    if (this.jumpsLimit === 0) {
+      this.applyForce(createVector(0, -3));
+      this.jumpsLimit = 1;
+    }
+    if (this.jumpsLimit === 1) {
+      this.applyForce(createVector(0, -0.5));
+      this.jumpsLimit = 2;
+    }
+    if (this.jumpsLimit === 2) {
+      this.jumpsLimit = 0;
+    }
   }
 }
